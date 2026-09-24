@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { MobileNav } from './mobile-nav';
 
 const links = [
   { href: '/blog', label: 'Blogi' },
@@ -31,6 +32,8 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
+
+        <MobileNav links={links} />
       </div>
     </header>
   );
