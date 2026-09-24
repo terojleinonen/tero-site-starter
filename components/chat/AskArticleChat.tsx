@@ -41,7 +41,7 @@ export default function AskArticleChat({ content, slug }: Props) {
 
   /* 🚀 SEND MESSAGE */
   const send = async (text: string) => {
-    const newMessages = [...messages, { role: 'user', content: text }]
+    const newMessages: Message[] = [...messages, { role: 'user', content: text }]
     setMessages(newMessages)
     setLoading(true)
 
