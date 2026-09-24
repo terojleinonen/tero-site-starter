@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { openai } from '@/lib/ai/openai'
+import { getOpenAI } from '@/lib/ai/openai'
 import { ARTICLE_CHAT_SYSTEM_PROMPT } from '@/lib/ai/prompts'
 import { parseJsonAnswer } from '@/lib/ai/parse'
 
@@ -17,7 +17,7 @@ export async function POST(req: Request) {
         content: m.content,
       })) || []
 
-    const completion = await openai.chat.completions.create({
+    const completion = await getOpenAI().chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
         { role: 'system', content: ARTICLE_CHAT_SYSTEM_PROMPT },

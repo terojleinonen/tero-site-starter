@@ -1,10 +1,6 @@
-import OpenAI from 'openai'
+import { getOpenAI } from '@/lib/ai/openai'
 import { NextResponse } from 'next/server'
 import { createClient } from '@sanity/client'
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY!,
-})
 
 const sanity = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
@@ -28,7 +24,7 @@ export async function POST(req: Request) {
       .join('\n')
 
     // 🔥 TECH SUMMARY
-    const tech = await openai.chat.completions.create({
+    const tech = await getOpenAI().chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
         {
@@ -45,7 +41,7 @@ export async function POST(req: Request) {
       .filter(Boolean)
 
     // 🔥 ELI5 SUMMARY
-    const simple = await openai.chat.completions.create({
+    const simple = await getOpenAI().chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
         {

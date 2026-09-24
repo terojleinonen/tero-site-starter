@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { openai } from '@/lib/ai/openai'
+import { getOpenAI } from '@/lib/ai/openai'
 import { parseJsonAnswer } from '@/lib/ai/parse'
 import { getAllPostContents } from '@/lib/sanity/queries'
 import { buildGlobalContext } from '@/lib/content/contextBuilder'
@@ -11,7 +11,7 @@ export async function POST(req: Request) {
     const posts = await getAllPostContents()
     const context = buildGlobalContext(posts)
 
-    const completion = await openai.chat.completions.create({
+    const completion = await getOpenAI().chat.completions.create({
       model: 'gpt-4o-mini',
       temperature: 0.3,
       messages: [
