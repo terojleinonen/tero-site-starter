@@ -1,6 +1,9 @@
 import '@/app/globals.css'
+import '@/app/styles/ai.css'
 import MouseGlow from '@/components/ui/MouseGlow'
 import ReadingProgress from '@/components/article/ReadingProgress'
+import { SiteHeader } from '@/components/site/header'
+import { SiteFooter } from '@/components/site/footer'
 
 export const metadata = {
   title: 'Tero Leinonen',
@@ -18,18 +21,11 @@ export default function RootLayout({
         <MouseGlow />
         <ReadingProgress />
         <div className="site-bg" />
-        <header className="nav">
-          <div className="nav-inner">
-            <div className="logo">TERO</div>
-            <nav>
-              <a href="/">Home</a>
-              <a href="/blog">Blog</a>
-              <a href="/notes">Notes</a>
-            </nav>
-          </div>
-        </header>
+        <SiteHeader />
 
-        <main className="container">{children}</main>
+        <main className="site-main">{children}</main>
+
+        <SiteFooter />
       </body>
     </html>
   )

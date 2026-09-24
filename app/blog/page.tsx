@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { getPosts, getFeaturedPost } from '@/lib/sanity/queries'
+import { EmptyState } from '@/components/site/empty-state'
 
 type Post = {
   title: string
@@ -21,6 +22,15 @@ export default async function BlogPage() {
       <h1 style={{ fontSize: '42px', fontWeight: 600 }}>
         Writing & Thinking
       </h1>
+
+      {posts.length === 0 && !featured && (
+        <div className="mt-10">
+          <EmptyState
+            title="Ei vielä kirjoituksia"
+            text="Blogi täyttyy heti, kun julkaiset ensimmäisen postauksen Sanity Studiossa."
+          />
+        </div>
+      )}
 
       {/* 🔥 FEATURED */}
       {featured && (
