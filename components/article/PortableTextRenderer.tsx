@@ -4,8 +4,8 @@ import {
   PortableText,
   type PortableTextComponents,
 } from '@portabletext/react'
-import CodeBlock from './CodeBlock'
-import { urlFor } from '@/sanity/lib/image'
+import CodeBlock from '@/components/ui/CodeBlock'
+import { urlFor } from '@/lib/sanity/image'
 
 type Props = {
   value: any
