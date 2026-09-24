@@ -5,6 +5,9 @@ import { safeFetch } from '@/lib/sanity/client';
 import { projectsIndexQuery } from '@/lib/sanity/queries';
 import type { Project } from '@/lib/sanity/types';
 
+// Refetch from Sanity at most once a minute
+export const revalidate = 60;
+
 export const metadata = {
   title: 'Projektit'
 };

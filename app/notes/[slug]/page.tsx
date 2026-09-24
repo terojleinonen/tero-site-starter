@@ -4,6 +4,9 @@ import { safeFetch } from '@/lib/sanity/client';
 import { noteBySlugQuery, noteSlugsQuery } from '@/lib/sanity/queries';
 import type { Note } from '@/lib/sanity/types';
 
+// Refetch from Sanity at most once a minute
+export const revalidate = 60;
+
 export async function generateStaticParams() {
   const slugs = (await safeFetch<{ slug: string }[]>(noteSlugsQuery)) ?? [];
   return slugs;

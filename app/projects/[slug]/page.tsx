@@ -4,6 +4,9 @@ import { safeFetch } from '@/lib/sanity/client';
 import { projectBySlugQuery, projectSlugsQuery } from '@/lib/sanity/queries';
 import type { Project } from '@/lib/sanity/types';
 
+// Refetch from Sanity at most once a minute
+export const revalidate = 60;
+
 export async function generateStaticParams() {
   const slugs = (await safeFetch<{ slug: string }[]>(projectSlugsQuery)) ?? [];
   return slugs;

@@ -2,6 +2,9 @@ import Link from 'next/link'
 import { getPosts, getFeaturedPost } from '@/lib/sanity/queries'
 import { EmptyState } from '@/components/site/empty-state'
 
+// Refetch from Sanity at most once a minute
+export const revalidate = 60
+
 type Post = {
   title: string
   slug: string

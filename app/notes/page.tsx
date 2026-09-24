@@ -5,6 +5,9 @@ import { safeFetch } from '@/lib/sanity/client';
 import { notesIndexQuery } from '@/lib/sanity/queries';
 import type { Note } from '@/lib/sanity/types';
 
+// Refetch from Sanity at most once a minute
+export const revalidate = 60;
+
 export const metadata = {
   title: 'Tiedotteet'
 };

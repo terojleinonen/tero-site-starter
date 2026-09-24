@@ -7,6 +7,9 @@ import AISummaryToggle from '@/components/article/AISummaryToggle'
 import AskArticleChat from '@/components/chat/AskArticleChat'
 import ArticleHeader from '@/components/article/ArticleHeader'
 
+// Refetch from Sanity at most once a minute
+export const revalidate = 60
+
 type PageProps = {
   params: Promise<{ slug: string }>
 }
